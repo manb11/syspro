@@ -2,7 +2,7 @@
 #include"student.h"
 #include<stdlib.h>
 
-int main(int argc, char * argv[])
+int main(int argc, char* argv[])
 {
 	struct student rec;
 	FILE *fp;
@@ -12,9 +12,9 @@ int main(int argc, char * argv[])
 		exit(1);
 	}
 	fp = fopen(argv[1], "wb");
-	printf("%-9s %7s %-4s\n", "StudentID", "Name", "Score");
+	printf("%-9s %-7s %-4s\n", "StudentID", "Name", "Score");
 	while(scanf("%d %s %d", &rec.id, rec.name, &rec.score) ==3)
-		fwrite(&rec, sizeof(rec), 1,fp);;
+		fwrite(&rec, sizeof(rec), 1,fp);
 
 	fclose(fp);
 	exit(0);
