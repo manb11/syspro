@@ -4,10 +4,10 @@
 
 int main() {
     char sentences[5][MAXLINE]; 
-    int lengths[5]; // 
+    int lengths[5]; 
     int max_length = 0;
 
-    // Input 5 sentences
+    // Input 5 
     for (int i = 0; i < 5; i++) {
         printf("Enter a sentence: ");
         if (fgets(sentences[i], MAXLINE, stdin) == NULL) {
