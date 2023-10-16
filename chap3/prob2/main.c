@@ -2,28 +2,31 @@
 #include "copy.h" 
 #include <string.h>
 
-char line[5] ;
-char longest[MAXLINE] ;
+int main() {
+    char sentences[5][MAXLINE]; 
+    int lengths[5]; // 
+    int max_length = 0;
 
-int main()
-{	
-	int len=0 ;
-	int max=0 ;
+    // Input 5 sentences
+    for (int i = 0; i < 5; i++) {
+        printf("Enter a sentence: ");
+        if (fgets(sentences[i], MAXLINE, stdin) == NULL) {
+            break;
+        }
+        lengths[i] = strlen(sentences[i]);
+        if (lengths[i] > max_length) {
+            max_length = lengths[i];
+        }
+    }
 
 
-	while (fgets(line,MAXLINE,stdin) != NULL) 
-	{
-		len = strlen(line);
+    for (int j = max_length; j > 0; j--) {
+        for (int i = 0; i < 5; i++) {
+            if (lengths[i] == j) {
+                printf("%s", sentences[i]);
+            }
+        }
+    }
 
-		if (len > max) {
-			max = len;
-			copy(line, longest);
-		}
-	}	
-	if(max > 0)
-	
-		printf("%s \n", longest);
-	
-
-	return 0;
+    return 0;
 }
