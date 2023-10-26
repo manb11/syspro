@@ -1,0 +1,7 @@
+struct coffe {
+	int id;
+	char name[100];
+	char category[100];
+	int expired;
+	int stock;
+};
