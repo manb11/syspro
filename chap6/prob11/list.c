@@ -62,7 +62,7 @@ void printStat(char *pathname, char *file, struct stat *st, int printInode, int 
     }
 
     if (S_ISDIR(st->st_mode) && addQuotesToDir) {
-        printf("\"%s\" ", file);  // 디렉터리를 따옴표로 감싸서 출력
+        printf("\"%s/\" ", file);  // 디렉터리를 따옴표로 감싸서 출력
     } else if (S_ISDIR(st->st_mode)) {
         printf("%s/ ", file);  // 디렉터리 뒤에 / 출력
     } else {
@@ -111,5 +111,4 @@ char *perm(mode_t mode)
     }
     return (perms);
 }
-dcuuser@ssh-22114397:~/syspro/chap6/prob11$
 
