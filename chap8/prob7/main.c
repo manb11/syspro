@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <pwd.h>
+#include <grp.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
@@ -29,19 +33,34 @@ int main(int argc, char *argv[]) {
             char *envvalue = getenv(envname);
 
             if (envvalue != NULL) {
+                printf(envname);
+                printf(" = ");
                 printf("%s\n", envvalue);
             } else {
                 printf("not found : %s\n", envname);
                 return 1;
             }
         }
-    } else if (strcmp(option, "-v") == 0 || strcmp(option, "--version") == 0) {
-        printf("Version 1.0\n");
-    } else {
-        printf("Invalid option: %s\n", option);
-        return 1;
-    }
+    } 
+    else if (strcmp(option, "-u") == 0) 
+    {
+        printf("My Realistic User ID : %d(%s) \n", getuid(), getpwuid(getuid())->pw_name);
+        printf("My Valid User ID : %d(%s) \n", geteuid(), getpwuid(geteuid())->pw_name);
 
+    } 
+    else if (strcmp(option, "-g") == 0)
+    {
+        printf("My Realistic Group ID : %d(%s) \n", getgid(), getgrgid(getgid()) -> gr_name);
+        printf("My Valid Group ID : %d(%s) \n", getegid(), getgrgid(getegid()) -> gr_name);
+    }
+    else if (strcmp(option, "-i") == 0)
+    {
+        printf("My Process Number : [%d] \n", getpid());
+    }
+    else if (strcmp(option, "-p") == 0)
+    {
+        printf("My Parent Process Number : [%d] \n", getppid());
+    }
     return 0;
 }
 
